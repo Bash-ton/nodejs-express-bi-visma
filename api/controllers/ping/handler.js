@@ -2,6 +2,7 @@ const { BigQuery } = require("@google-cloud/bigquery")
 const util = require("util")
 // const { clearBigQueryData } = require("./bigQueryFunctions")
 // const { syncData, getBearerToken } = require("./vismaFunctions")
+const axios = require("axios")
 
 const ping = async (req, res) => {
   const senderMessage = `${
@@ -26,12 +27,19 @@ const ping = async (req, res) => {
     }
 
     // BigQuery vars TODO
-    const projectId = "prd-euw-vismaexporter-apegroup"
+    const projectId = "bigquery-test-410910" // "prd-euw-vismaexporter-apegroup"
+    // const bigquery = new BigQuery({
+    //   projectId: projectId,
+    // })
+    // const datasetId = "Umain_Visma_Dev"
+    // const tableId = "ARC_Umain_Time"
+
     const bigquery = new BigQuery({
       projectId: projectId,
     })
-    const datasetId = "Umain_Visma_Dev"
-    const tableId = "ARC_Umain_Time"
+    const datasetId = "bigquery_testing_data_set_id"
+    const tableId = "Hours_testing"
+
     const fullTableID = projectId + "." + datasetId + "." + tableId
     if (!projectId || !datasetId || !tableId) {
       throw new Error("Missing required environment variables - BigQuery")
@@ -87,8 +95,6 @@ const ping = async (req, res) => {
 /**
  * VISMA
  */
-
-
 
 // Generates Visma auth token
 const getBearerToken = async (
