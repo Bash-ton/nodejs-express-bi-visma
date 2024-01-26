@@ -21,6 +21,8 @@
     "mongodb-uri": "^0.9.7",
     "mongoose": "^5.4.4",
     "morgan": "^1.9.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "axios": "^1.6.5",
+    "@google-cloud/bigquery": "^7.3.0"
   }
 }
